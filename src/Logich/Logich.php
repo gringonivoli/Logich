@@ -184,12 +184,10 @@ class Logich{
 	 * @return NO RETORNA NADA, VER SI ES NECESARIO QUE LO HAGA!??!
 	 */
 	public function logout(){
+		$this->userModel->setSessionId(Session::get('userId'));
 		Session::regenerateId();
 		Session::destroy();
 		Session::start();
-		if($this->checkUsername()){
-            $this->userModel->setSessionId($this->userModel->id);
-		}		
 	}
 
 	/**
